@@ -12,7 +12,7 @@ def show_board(board):
         elif board[i] == -1:
             cells.append("O")
         else:
-            cells.append(" ")          # empty square: show nothing
+            cells.append(" ")          
     print()
     print(f" {cells[0]} | {cells[1]} | {cells[2]}")
     print("---+---+---")
@@ -30,9 +30,9 @@ def ask_human_move(board):
 
 
 def play_game():
-    board = [0] * 9                      # agent = X (1), you = O (-1)
+    board = [0] * 9                   
 
-    if random.random() < 0.5:            # sometimes the agent starts
+    if random.random() < 0.5:           
         print("Agent starts.")
         board[choose_action(board, epsilon=0)] = 1
     else:
@@ -40,12 +40,12 @@ def play_game():
 
     while True:
         show_board(board)
-        board[ask_human_move(board)] = -1           # your move
+        board[ask_human_move(board)] = -1         
         winner = Check_Winner(board)
         if winner is not None:
             break
 
-        board[choose_action(board, epsilon=0)] = 1  # agent's move
+        board[choose_action(board, epsilon=0)] = 1  
         winner = Check_Winner(board)
         if winner is not None:
             break
